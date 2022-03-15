@@ -14,11 +14,19 @@ class _MisbahaState extends State<Misbaha> {
 
   @override
   Widget build(BuildContext context) {
-    if (counter == 15) {
-      name = "سبحان الله ";
-    }
-    if (counter == 30) name = "الحمد لله ";
-    if (counter == 45) name = "لا اله الا الله";
+    setState(() {
+      while (counter/46>=1) {
+        counter =0;
+        roll++;
+      }
+      if (counter == 0) name = "الله أكبر ";
+      if (counter == 15) {
+        name = "سبحان الله ";
+      }
+      if (counter == 30) name = "الحمد لله ";
+      if (counter == 45) name = "لا اله الا الله";
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -126,6 +134,7 @@ class _MisbahaState extends State<Misbaha> {
                       onPressed: () {
                         setState(() {
                           counter = 0;
+                          roll=0;
                         });
                       },
                       child: const Text("البدء من جديد",
